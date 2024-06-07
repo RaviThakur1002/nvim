@@ -41,4 +41,19 @@ vim.api.nvim_command([[
   autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 ]])
 
+-- Shifting lines up
+map('n', '<A-K>', ':m .-2<CR>==', opts)
+map('i', '<A-K>', '<Esc>:m .-2<CR>==gi', opts)
+map('v', '<A-K>', ":m '<-2<CR>gv=gv", opts)
+
+-- Shifting lines down
+map('n', '<A-J>', ':m .+1<CR>==', opts)
+map('i', '<A-J>', '<Esc>:m .+1<CR>==gi', opts)
+map('v', '<A-J>', ":m '>+1<CR>gv=gv", opts)
+
+-- Duplicate the current line
+map('n', '<A-D>', 'yyp', opts)
+map('v', '<A-D>', 'y`>p`[V', opts)
+
 return true -- Important for Lua modules
+
