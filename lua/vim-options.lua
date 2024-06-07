@@ -55,5 +55,12 @@ map('v', '<A-J>', ":m '>+1<CR>gv=gv", opts)
 map('n', '<A-D>', 'yyp', opts)
 map('v', '<A-D>', 'y`>p`[V', opts)
 
+
+-- Auto-save input1.txt on text change
+vim.cmd([[
+  autocmd BufWritePost ~/projectone/input1.txt :wa
+  autocmd TextChanged,TextChangedI ~/projectone/input1.txt silent! write
+]])
+
 return true -- Important for Lua modules
 
