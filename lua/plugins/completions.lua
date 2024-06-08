@@ -12,6 +12,8 @@ return {
   {
     "hrsh7th/nvim-cmp",
     config = function()
+      vim.opt.pumheight=10 --adjust no.of items in the suggestion box
+
       local cmp = require("cmp")
       require("luasnip.loaders.from_vscode").lazy_load()
 

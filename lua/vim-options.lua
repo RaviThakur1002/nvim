@@ -31,7 +31,7 @@ vim.api.nvim_create_user_command("RunJS", function()
     vim.cmd("!node " .. file)
 end, {})
 
--- Autocommand to trigger `checktime` when files change on disk
+-- Autocommand to trigger checktime when files change on disk
 vim.api.nvim_command([[
   autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 ]])
@@ -55,12 +55,26 @@ map('v', '<A-J>', ":m '>+1<CR>gv=gv", opts)
 map('n', '<A-D>', 'yyp', opts)
 map('v', '<A-D>', 'y`>p`[V', opts)
 
-
 -- Auto-save input1.txt on text change
 vim.cmd([[
   autocmd BufWritePost ~/projectone/input1.txt :wa
   autocmd TextChanged,TextChangedI ~/projectone/input1.txt silent! write
 ]])
+
+-- Function to periodically check for updates
+if vim.g.CheckUpdateStarted == nil then
+    vim.g.CheckUpdateStarted = 1
+    vim.fn.timer_start(1, function()
+        CheckUpdate()
+    end)
+end
+
+function CheckUpdate()
+    vim.cmd('silent! checktime')
+    vim.fn.timer_start(1000, function()
+        CheckUpdate()
+    end)
+end
 
 return true -- Important for Lua modules
 
