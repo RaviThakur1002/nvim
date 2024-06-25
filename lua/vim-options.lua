@@ -16,7 +16,7 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Compile and run C++ code with redirection on F5
-map('n', '<F5>', ':w | !g++ -std=c++20 -o main % && ./main<CR>' , opts)
+map("n", "<F5>", ":w | !g++ -std=c++20 -o main % && ./main<CR>", opts)
 
 -- Run JavaScript file with Node.js on F6
 map("n", "<F6>", ":w<CR>:!node %<CR>", opts)
@@ -42,18 +42,18 @@ vim.api.nvim_command([[
 ]])
 
 -- Shifting lines up
-map('n', '<A-K>', ':m .-2<CR>==', opts)
-map('i', '<A-K>', '<Esc>:m .-2<CR>==gi', opts)
-map('v', '<A-K>', ":m '<-2<CR>gv=gv", opts)
+map("n", "<A-K>", ":m .-2<CR>==", opts)
+map("i", "<A-K>", "<Esc>:m .-2<CR>==gi", opts)
+map("v", "<A-K>", ":m '<-2<CR>gv=gv", opts)
 
 -- Shifting lines down
-map('n', '<A-J>', ':m .+1<CR>==', opts)
-map('i', '<A-J>', '<Esc>:m .+1<CR>==gi', opts)
-map('v', '<A-J>', ":m '>+1<CR>gv=gv", opts)
+map("n", "<A-J>", ":m .+1<CR>==", opts)
+map("i", "<A-J>", "<Esc>:m .+1<CR>==gi", opts)
+map("v", "<A-J>", ":m '>+1<CR>gv=gv", opts)
 
 -- Duplicate the current line
-map('n', '<A-D>', 'yyp', opts)
-map('v', '<A-D>', 'y`>p`[V', opts)
+map("n", "<A-D>", "yyp", opts)
+map("v", "<A-D>", "y`>p`[V", opts)
 
 -- Auto-save input1.txt on text change
 vim.cmd([[
@@ -70,11 +70,17 @@ if vim.g.CheckUpdateStarted == nil then
 end
 
 function CheckUpdate()
-    vim.cmd('silent! checktime')
+    vim.cmd("silent! checktime")
     vim.fn.timer_start(1000, function()
         CheckUpdate()
     end)
 end
 
-return true -- Important for Lua modules
+-- Key mappings for tabs
+map("n", "<Leader>to", ":tabnew<CR>", opts)
+map("n", "<Leader>tx", ":tabclose<CR>", opts)
+map("n", "<Leader>tn", ":tabn<CR>", opts)
+map("n", "<Leader>tp", ":tabp<CR>", opts)
+map("n", "<Leader>tf", ":tabnew %<CR>", opts)
 
+return true -- Important for Lua modules
