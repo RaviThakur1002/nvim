@@ -10,6 +10,11 @@ vim.o.shiftwidth = 4
 vim.o.autoread = true
 vim.o.clipboard = "unnamedplus"
 vim.g.mapleader = " "
+vim.opt.relativenumber = true -- show relative line numbers
+vim.opt.number = true
+-- cursor line
+vim.opt.cursorline = true -- highlight the current cursor line
+
 
 -- Key mappings
 local map = vim.api.nvim_set_keymap
