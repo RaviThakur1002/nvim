@@ -10,4 +10,20 @@ return {
 		"rose-pine/neovim",
 		name = "rose-pine",
 	},
+
+	{
+		"olivercederborg/poimandres.nvim",
+	},
+
+	{
+		"projekt0n/github-nvim-theme",
+	},
+
+    {
+         "catppuccin/nvim",
+    },
+
+    {
+        "scottmckendry/cyberdream.nvim",
+    },
 }
