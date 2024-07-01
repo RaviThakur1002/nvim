@@ -15,6 +15,9 @@ vim.opt.number = true
 -- cursor line
 vim.opt.cursorline = true -- highlight the current cursor line
 
+vim.opt.autoindent = true   -- Enable automatic indentation
+vim.opt.smartindent = true  -- Enable smart indenting
+
 
 -- Key mappings
 local map = vim.api.nvim_set_keymap

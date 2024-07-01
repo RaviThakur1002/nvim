@@ -1,11 +1,11 @@
 return {
   {
-    "projekt0n/github-nvim-theme",
+     "catppuccin/nvim",
     lazy = false,
-    name = "github-dark-defualt",
+    name = "catppuccin-mocha",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme "github_dark_default "
+      vim.cmd.colorscheme "github_dark_tritanopia"
     end
   }
 }

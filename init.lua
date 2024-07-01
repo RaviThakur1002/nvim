@@ -25,7 +25,7 @@ require("plugins")
 -- Load vim options configuration
 require("vim-options")
 
--- Load lazy.nvim with plugins 
+-- Load lazy.nvim with plugins
 require("lazy").setup({ { import = "plugins" } }, {
 	checker = {
 		enabled = true,

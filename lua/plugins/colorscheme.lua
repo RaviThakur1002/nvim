@@ -1,26 +1,22 @@
 return {
 
-	-- Kanagawa colorscheme
-	{
-		"rebelot/kanagawa.nvim",
-	},
+    -- Kanagawa colorscheme
+    {
+        "rebelot/kanagawa.nvim",
+    },
 
-	--Rose-pine colorscheme
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-	},
-
-	{
-		"olivercederborg/poimandres.nvim",
-	},
-
-	{
-		"projekt0n/github-nvim-theme",
-	},
+    --Rose-pine colorscheme
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+    },
 
     {
-         "catppuccin/nvim",
+        "olivercederborg/poimandres.nvim",
+    },
+
+    {
+        "projekt0n/github-nvim-theme",
     },
 
     {
