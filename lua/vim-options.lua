@@ -94,4 +94,11 @@ map("n", "<Leader>tn", ":tabn<CR>", opts)
 map("n", "<Leader>tp", ":tabp<CR>", opts)
 map("n", "<Leader>tf", ":tabnew %<CR>", opts)
 
+
+--Floaterm key mappings
+map("n", "<Leader>t", ":FloatermNew<CR>", opts)
+map("n", "<Leader>tt", ":FloatermToggle<CR>", opts)
+map("n", "<Leader>tn", ":FloatermNext<CR>", opts)
+map("n", "<Leader>tp", ":FloatermPrev<CR>", opts)
+
 return true -- Important for Lua modules
