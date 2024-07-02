@@ -4,7 +4,7 @@ vim.cmd("filetype plugin on")
 
 -- Set Vim options
 vim.o.expandtab = true
-vim.o.tabstop = 2
+vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.autoread = true
@@ -16,7 +16,10 @@ vim.opt.number = true
 vim.opt.cursorline = true -- highlight the current cursor line
 
 vim.opt.autoindent = true   -- Enable automatic indentation
-vim.opt.smartindent = true  -- Enable smart indenting
+--vim.opt.smartindent = true  -- Enable smart indenting
+
+
+vim.o.formatoptions = vim.o.formatoptions .. 'cqrn'
 
 
 -- Key mappings
