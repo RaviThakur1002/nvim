@@ -22,7 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Load plugins configuration
 require("plugins")
 
--- Load vim options configuration
+-- Load vim options configuraton
 require("vim-options")
 
 -- Load lazy.nvim with plugins

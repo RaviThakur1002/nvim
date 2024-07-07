@@ -5,7 +5,7 @@ return {
     name = "catppuccin-mocha",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme "github_dark_tritanopia"
+      vim.cmd.colorscheme "catppuccin-mocha"
     end
   }
 }
