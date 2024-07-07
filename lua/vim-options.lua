@@ -117,6 +117,11 @@ map("n", "<Leader>h", ":FloatermToggle<CR>", opts)
 map("n", "<Leader>tn", ":FloatermNext<CR>", opts)
 map("n", "<Leader>tp", ":FloatermPrev<CR>", opts)
 
+-- codeium off cpp
+vim.g.codeium_filetypes = {
+  ["cpp"] = false,
+}
+
 
 
 return true -- Important for Lua modules
