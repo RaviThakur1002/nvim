@@ -9,10 +9,18 @@ return {
 			very_light_purple = "#CE93D8",
 			pale_purple = "#E1BEE7",
 			shaded_purple = "#da25c8",
+			git_color_1 = "#E9FF97",
+			git_color_2 = "#FFD18E",
+			git_color_3 = "#FFA38F",
+			git_color_4 = "#FF7EE2",
+			git_color_5 = "#36BA98",
+			git_color_6 = "#E9C46A",
+			git_color_7 = "#F4A261",
+			git_color_8 = "#E76F51",
 		}
 		local bubbles_theme = {
 			normal = {
-				a = { fg = colors.deep_purple, bg = colors.light_purple },
+				a = { fg = colors.pale_purple, bg = colors.light_purple },
 				b = { fg = colors.pale_purple, bg = colors.deep_purple },
 				c = { fg = colors.pale_purple },
 			},
@@ -55,29 +63,17 @@ return {
 						right_padding = 2,
 						left_padding = 2,
 						color = function()
-							local mode_color = {
-								n = colors.shaded_purple,
-								i = colors.medium_purple,
-								v = colors.light_purple,
-								["␖"] = colors.light_purple,
-								V = colors.light_purple,
-								c = colors.shaded_purple,
-								no = colors.shaded_purple,
-								s = colors.medium_purple,
-								S = colors.medium_purple,
-								["␓"] = colors.medium_purple,
-								ic = colors.very_light_purple,
-								R = colors.light_purple,
-								Rv = colors.light_purple,
-								cv = colors.shaded_purple,
-								ce = colors.shaded_purple,
-								r = colors.shaded_purple,
-								rm = colors.shaded_purple,
-								["r?"] = colors.shaded_purple,
-								["!"] = colors.shaded_purple,
-								t = colors.shaded_purple,
+							local git_colors = {
+								colors.git_color_1,
+								colors.git_color_2,
+								colors.git_color_3,
+								colors.git_color_4,
+								colors.git_color_5,
+								colors.git_color_6,
+								colors.git_color_7,
+								colors.git_color_8,
 							}
-							return { bg = mode_color[vim.fn.mode()], fg = colors.deep_purple }
+							return { bg = git_colors[vim.fn.mode():byte() % #git_colors + 1], fg = colors.deep_purple }
 						end,
 					},
 				},
@@ -119,3 +115,4 @@ return {
 		})
 	end,
 }
+

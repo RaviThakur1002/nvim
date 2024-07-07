@@ -121,7 +121,6 @@ map("n", "<Leader>tp", ":FloatermPrev<CR>", opts)
 vim.g.codeium_filetypes = {
   ["cpp"] = false,
 }
-
-
+vim.cmd("let g:codeium_disable_bindings = 1")
 
 return true -- Important for Lua modules
