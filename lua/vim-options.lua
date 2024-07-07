@@ -14,8 +14,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.opt.guicursor:append("a:blinkwait700-blinkoff400-blinkon250")
 
     -- Set highlight groups
-    vim.api.nvim_set_hl(0, "Cursor", { fg = "white", bg = "#f48d8f", bold = true })
-    vim.api.nvim_set_hl(0, "CursorInsert", { fg = "black", bg = "#FF8C00" })
+    vim.api.nvim_set_hl(0, "Cursor", { fg = "white", bg = "#CE93D8", bold = true })
+    vim.api.nvim_set_hl(0, "CursorInsert", { fg = "black", bg = "#AB47BC" })
   end,
 })
 
