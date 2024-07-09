@@ -7,12 +7,12 @@ return {
     local rainbow_delimiters = require 'rainbow-delimiters'
 
     -- Define custom highlight groups with the provided colors
-    vim.api.nvim_set_hl(0, 'RainbowDelimiterRed', { fg = '#e07ce5' })
-    vim.api.nvim_set_hl(0, 'RainbowDelimiterYellow', { fg = '#8cee88' })
-    vim.api.nvim_set_hl(0, 'RainbowDelimiterBlue', { fg = '#c38ed5' })
-    vim.api.nvim_set_hl(0, 'RainbowDelimiterOrange', { fg = '#70ccc3' })
-    vim.api.nvim_set_hl(0, 'RainbowDelimiterGreen', { fg = '#f47550' })
-    vim.api.nvim_set_hl(0, 'RainbowDelimiterViolet', { fg = '#3ba8e9' })
+    vim.api.nvim_set_hl(0, 'RainbowDelimiterRed', { fg = '#FF70AB' })
+    vim.api.nvim_set_hl(0, 'RainbowDelimiterYellow', { fg = '#FFDB5C' })
+    vim.api.nvim_set_hl(0, 'RainbowDelimiterBlue', { fg = '#A0DEFF' })
+    vim.api.nvim_set_hl(0, 'RainbowDelimiterOrange', { fg = '#FFAF61' })
+    vim.api.nvim_set_hl(0, 'RainbowDelimiterGreen', { fg = '#C3FF93' })
+    vim.api.nvim_set_hl(0, 'RainbowDelimiterViolet', { fg = '#FF204E' })
 
     -- Configure rainbow-delimiters.nvim
     vim.g.rainbow_delimiters = {
