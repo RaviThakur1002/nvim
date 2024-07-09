@@ -1,28 +1,28 @@
 return {
 
-    -- Kanagawa colorscheme
-    {
-        "rebelot/kanagawa.nvim",
-    },
+	-- nightfox colorscheme
+	{
+		"EdenEast/nightfox.nvim",
+	},
 
-    --Rose-pine colorscheme
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-    },
+	--Rose-pine colorscheme
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+	},
 
-    {
-        "olivercederborg/poimandres.nvim",
-    },
+	{
+		"marko-cerovac/material.nvim",
+	},
 
-    {
-        "scottmckendry/cyberdream.nvim",
-    },
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
 
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-    },
+	{
+		"Mofiqul/dracula.nvim",
+	},
 }

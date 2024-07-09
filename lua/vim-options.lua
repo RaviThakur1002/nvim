@@ -115,6 +115,12 @@ map("n", "<Leader>h", ":FloatermToggle<CR>", opts)
 map("n", "<Leader>fn", ":FloatermNext<CR>", opts)
 map("n", "<Leader>fp", ":FloatermPrev<CR>", opts)
 
+
+--cellular mappings
+map("n", "<Leader>fml", ":CellularAutomaton make_it_rain<CR>", opts)
+map("n", "<Leader>fmg", ":CellularAutomaton game_of_life<CR>", opts)
+
+
 -- codeium off cpp
 vim.g.codeium_filetypes = {
     ["cpp"] = false,
