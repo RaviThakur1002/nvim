@@ -127,4 +127,6 @@ vim.g.codeium_filetypes = {
 }
 vim.cmd("let g:codeium_disable_bindings = 1")
 
+
+
 return true -- Important for Lua modules
