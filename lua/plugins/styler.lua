@@ -7,7 +7,7 @@ return {
 				markdown = { colorscheme = "tokyonight-moon" },
 				javascript = { colorscheme = "rose-pine-main" },
 				javascriptreact = { colorscheme = "duskfox" },
-				css ={ colorscheme = "material-deep-ocean" },
+				css = { colorscheme = "material-deep-ocean" },
 				text = { colorscheme = "dracula" },
 			},
 		})

@@ -22,8 +22,11 @@ vim.opt.rtp:prepend(lazypath)
 -- Load plugins configuration
 require("plugins")
 
--- Load vim options configuraton
+-- Load vim options configuration
 require("vim-options")
+
+--Load keymaps configuration
+require("keymaps")
 
 -- Load lazy.nvim with plugins
 require("lazy").setup({ { import = "plugins" } }, {
