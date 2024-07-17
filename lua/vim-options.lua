@@ -49,8 +49,8 @@ vim.api.nvim_command([[
 
 -- Auto-save input1.txt on text change
 vim.cmd([[
-  autocmd BufWritePost ~/projectone/input1.txt :wa
-  autocmd TextChanged,TextChangedI ~/projectone/input1.txt silent! write
+  autocmd BufWritePost ~/cp/projectone/input1.txt :wa
+  autocmd TextChanged,TextChangedI ~/cp/projectone/input1.txt silent! write
 ]])
 
 -- Function to periodically check for updates
