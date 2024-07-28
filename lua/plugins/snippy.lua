@@ -11,6 +11,14 @@ return {
                     ["<leader>x"] = "cut_text",
                 },
             },
+            snippet_dirs = {
+                "~/.config/nvim/snippets",
+            },
+            load_ft_snippets = true,
+            extend_ft_snippets = {
+                cpp = {"cpp", "hashing"}, -- Ensure "cpp" is also included
+            },
         })
     end,
 }
+
