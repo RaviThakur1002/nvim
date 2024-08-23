@@ -2,6 +2,9 @@
 vim.cmd("filetype on")
 vim.cmd("filetype plugin on")
 
+-- Turn off squiggly lines for blank lines at the start
+vim.opt.fillchars:append({ eob = " " })
+
 -- Cursor settings
 vim.api.nvim_create_autocmd("ColorScheme", {
     pattern = "*",
@@ -74,9 +77,7 @@ vim.g.codeium_filetypes = {
 }
 vim.cmd("let g:codeium_disable_bindings = 1")
 
-
 -- vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:
 -- vim.opt.foldcolumn = '1
 
 return true -- Important for Lua modules
-

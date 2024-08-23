@@ -5,7 +5,7 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Compile and run C++ code with redirection on F5
-map("n", "<F5>", ":w | !g++ -std=c++20 -o main % && ./main<CR>", opts)
+map("n", "<F5>", ":w | !g++ -std=c++23 -o main % && ./main<CR>", opts)
 
 -- Run JavaScript file with Node.js on F6
 map("n", "<F6>", ":w<CR>:!node %<CR>", opts)

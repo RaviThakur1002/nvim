@@ -13,7 +13,11 @@ return {
                 "rose-pine-main",
                 "material-darker",
                 "material-deep-ocean",
-                "material-palenight",
+                "oxocarbon",
+                "boo",
+                "minimal",
+                "embark",
+                "bamboo",
             },
             
             livePreview = true,
