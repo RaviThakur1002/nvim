@@ -1,6 +1,11 @@
 -- Initialize vim.opt as a Lua table
 vim.opt = vim.opt or {}
 
+-- Define CPTemplate command
+vim.cmd([[
+  command! -nargs=1 CPTemplate lua require('cp_templates').insert_template(<f-args>)
+]])
+
 -- Define lazypath
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 

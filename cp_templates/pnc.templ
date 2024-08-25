@@ -1,0 +1,30 @@
+// precomputation in o(n) time
+vll fact;
+vll ifact;
+
+void FactIfact(ll N) {
+  fact.resize(N + 1);
+  ifact.resize(N + 1);
+  fact[0] = 1;
+
+  cf(i, 1, N) { fact[i] = mod_mul(fact[i - 1], i, MOD); }
+
+  ifact[N] = mminvprime(fact[N], MOD);
+  rf(i, N, 0) { ifact[i] = mod_mul(ifact[i + 1], i + 1, MOD); }
+}
+
+ll ncr1(ll n, ll r, ll m = MOD) {
+  return mod_mul(fact[n], mod_mul(ifact[r], ifact[n - r], m), m);
+}
+
+// for individual ncr in o(r) time
+ll ncr2(ll n, ll r) {
+  if (r > n - r)
+    r = n - r;
+  ll res = 1;
+  f(i, 0, r) {
+    res = res * (n - i);
+    res = res / (i + 1);
+  }
+  return res;
+}

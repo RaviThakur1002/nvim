@@ -1,0 +1,156 @@
+/*  वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।
+    निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥  */
+    
+/*##############################################################################
+
+
+▓█████▄ ▓█████ ██▒   █▓ ██▓ ██▓              
+▒██▀ ██▌▓█   ▀▓██░   █▒▓██▒▓██▒    
+░██   █▌▒███   ▓██  █▒░▒██▒▒██░             
+░▓█▄   ▌▒▓█  ▄  ▒██ █░░░██░▒██░        
+░▒████▓ ░▒████▒  ▒▀█░  ░██░░██████▒
+ ▒▒▓  ▒ ░░ ▒░ ░  ░ ▐░  ░▓  ░ ▒░▓  ░
+ ░ ▒  ▒  ░ ░  ░  ░ ░░   ▒ ░░ ░ ▒  ░
+ ░ ░  ░    ░       ░░   ▒ ░  ░ ░   
+   ░       ░  ░     ░   ░      ░  ░                         
+###############################################################################*/
+
+#include <bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
+
+using namespace std;
+using namespace chrono;
+using namespace __gnu_pbds;
+
+#ifndef ONLINE_JUDGE
+#include "debugger.h"
+#else
+#define debug(x...)
+#endif
+
+/* TYPES  */
+#define ff first
+#define ss second
+#define ll long long
+#define ld long double
+#define ull unsigned long long
+#define all(v) v.begin(), v.end()
+#define rall(v) v.rbegin(), v.rend()
+#define pii pair<int, int>
+#define pll pair<long long, long long>
+#define vi vector<int>
+#define vll vector<long long>
+#define mii map<int, int>
+#define si set<int>
+#define sc set<char>
+#define sz(x) (int)x.size()
+#define mset(a,b) memset(a,b,sizeof(a))
+
+/* TIME */
+#define debug1(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
+#define time__(d) \
+for ( \
+    auto blockTime = make_pair(chrono::high_resolution_clock::now(), true); \
+    blockTime.second; \
+    debug1("%s: %d ms\n", d, (int)chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - blockTime.first).count()), blockTime.second = false \
+)
+
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+  
+/* FUNCTIONS */
+#define f(i,s,e) for(long long int i=s;i<e;i++)
+#define cf(i,s,e) for(long long int i=s;i<=e;i++)
+#define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
+#define pb push_back
+#define eb emplace_back
+
+/* PBDS */
+template <typename T>
+using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+//order_of_key (k) : Number of items strictly smaller than k .
+//find_by_order(k) : K-th element in a set (counting from zero).
+//we can change less than to less_equal, greater_equal,greater
+
+/* PRINTS */
+template <class T>
+void print_v(vector<T> &v) { for (auto x : v) cout << x << " "; cout <<"\n";}
+
+/* UTILS */
+#define MOD 1000000007
+#define MOD1 998244353
+#define PI 3.1415926535897932384626433832795
+#define read(type) readInt<type>()
+ll power(ll a,ll b,ll mod){ll res=1;while(b>0){if(b&1)res=(res*a)%mod;a=(a*a)%mod;b=b>>1;}return res;}
+ll min(ll a,ll b) { if (a<b) return a; return b; }
+ll max(ll a,ll b) { if (a>b) return a; return b; }
+ll gcd(ll a,ll b) { if (b==0) return a; return gcd(b, a%b); }
+ll lcm(ll a,ll b) { return a/gcd(a,b)*b; }
+ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);}
+string to_upper(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='a' && a[i]<='z') a[i]-='a'-'A'; return a; }
+string to_lower(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='A' && a[i]<='Z') a[i]+='a'-'A'; return a; }
+bool prime(ll a) { if (a==1) return 0; for (int i=2;i<=round(sqrt(a));++i) if (a%i==0) return 0; return 1; }
+void yes() { cout<<"YES\n"; }
+void no() { cout<<"NO\n"; }
+
+/* Modulus functions */
+ll mminvprime(ll a,ll b) {return power(a,b - 2,b);}
+ll mod_mul(ll a,ll b,ll m){a=a%m; b=b%m ; return(((a*b)%m)+m)%m;}
+ll mod_sub(ll a,ll b,ll m){a=a%m; b=b%m ; return(((a-b)%m)+m)%m;}
+ll mod_add(ll a,ll b,ll m){a=a%m; b=b%m ; return(((a+b)%m)+m)%m;}
+ll mod_div(ll a, ll b,ll m){a=a%m; b=b%m; return(mod_mul(a, mminvprime(b,m),m)+m)%m;}//only for prime m
+
+/*  All Required define Pre-Processors and typedef Constants */
+typedef long int int32;
+typedef unsigned long int uint32;
+typedef long long int int64;
+typedef unsigned long long int  uint64;
+const char nl = '\n';
+
+/* BIT OPERATIONS */
+int popcount(ll x) { return __builtin_popcountll(x); }
+int msb(int x) { return 31 - __builtin_clz(x); }
+int msb(ll x) { return 63 - __builtin_clzll(x); }
+int lsb(int x) { return __builtin_ctz(x); }
+int lsb(ll x) { return __builtin_ctzll(x); }
+bool isPowerOfTwo(int x) { return (x && !(x & (x - 1))); }
+int turnOffLastBit(int x) { return x & (x - 1); }
+int turnOnLastZero(int x) { return x | (x + 1); }
+int turnOffLastConsecutiveOnes(int x) { return x & (x + 1); }
+int turnOnLastConsecutiveZeroes(int x) { return x | (x - 1); }
+
+void local(){
+#ifndef ONLINE_JUDGE
+    freopen("input1.txt", "r", stdin);
+    freopen("output1.txt", "w", stdout);
+    freopen("error.txt", "w", stderr);
+#endif
+
+#ifndef ONLINE_JUDGE
+#define debug(...) std::cerr << __LINE__ << ": [", _DEBUG_UTIL_::printer(#__VA_ARGS__, __VA_ARGS__)
+#else
+#define debug(...)
+#endif
+}
+
+void solve(){
+    
+}
+
+int main() {
+    local();
+
+    ios_base::sync_with_stdio(false); 
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int t=1;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+
+    return 0;
+}
+
+//हर हर महादेव ||

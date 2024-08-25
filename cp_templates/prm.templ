@@ -1,0 +1,28 @@
+// sieve of eratosthenes -> precomputation of primes in Nlog(log(N))
+vector<vll> pfs(1e7);
+vll isPrime(1e7,1);
+vll spf(1e7,1e9);
+ll N=1e7;
+
+void isPrimeANDspf(){
+    cf(i,2,N){
+        if(isPrime[i]){
+            spf[i]=i;
+            for(ll j=i*i;j<N+1 ;j+=i){
+                isPrime[j]=0;
+                spf[j]=min(spf[j],i);
+            }
+        }
+    }
+}
+
+void primeFactors(){
+    cf(i,1,N){
+        ll j = i;
+        while(j!=1){
+            ll smp = spf[j];
+            pfs[i].pb(smp);
+            j/=smp;
+        }
+    }
+}
