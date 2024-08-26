@@ -8,7 +8,7 @@ return {
 				javascript = { colorscheme = "rose-pine-main" },
 				javascriptreact = { colorscheme = "duskfox" },
 				css = { colorscheme = "material-deep-ocean" },
-				text = { colorscheme = "dracula" },
+				text = { colorscheme = "catppuccin-mocha" },
 			},
 		})
 	end,

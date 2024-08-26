@@ -92,6 +92,6 @@ end
 map("n", "<leader>rr", ":lua RangeReplace()<CR>", opts)
 
 -- Current Line Replacement
-map("n", "<leader>cl", ":s//g<Left><Left>", opts)
+map("n", "<leader>Cl", ":s//g<Left><Left>", opts)
 
 return true -- Important for Lua modules
