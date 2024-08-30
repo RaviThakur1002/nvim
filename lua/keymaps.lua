@@ -5,9 +5,8 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Compile and run C++ code with redirection on F5
-map("n", "<F5>", ":w | silent! !g++ -std=c++23 -o main % && ./main<CR>", opts)
-
-
+-- To integrate distcc, modify the mapping like this:
+map('n', '<F5>', ':w | silent! !ccache distcc g++ -std=c++23 -o main % && ./main<CR>', { noremap = true, silent = true })
 
 
 -- Run JavaScript file with Node.js on F6
@@ -66,9 +65,15 @@ map("n", "<Leader>cdb", ":CdProjectBack<CR>", opts)
 map("n", "<Leader>cds", ":CdProjectSearchAndAdd<CR>", opts)
 map("n", "<Leader>cdt", ":CdProjectTab<CR>", opts)
 
--- Set up a convenience function for mappings
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+
+-- Toggle between split windows using Alt + arrow keys
+map("n", "<A-Left>", "<C-w>h", opts)
+map("n", "<A-Right>", "<C-w>l", opts)
+map("n", "<A-Up>", "<C-w>k", opts)
+map("n", "<A-Down>", "<C-w>j", opts)
+
+
+-- ──────────────────────────── REPLACEMENTS ─────────────────────────
 
 -- Global replacement
 map("n", "<leader>rg", ":%s//g<Left><Left>", opts)
@@ -96,5 +101,7 @@ map("n", "<leader>rr", ":lua RangeReplace()<CR>", opts)
 
 -- Current Line Replacement
 map("n", "<leader>Cl", ":s//g<Left><Left>", opts)
+
+-- ──────────────────────────────────────────────────────────────────────
 
 return true -- Important for Lua modules

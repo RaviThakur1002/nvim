@@ -47,7 +47,7 @@ return {
 			},
 			sections = {
 				lualine_a = {
-					{ "mode", separator = { left = "", right = "" }, right_padding = 2, left_padding = 2 },
+					{ "mode", separator = { left = "", right = "" }, padding = { left = 2, right = 2 } },
 				},
 				lualine_b = {
 					{
@@ -60,8 +60,7 @@ return {
 					{
 						"branch",
 						separator = { right = "" },
-						right_padding = 2,
-						left_padding = 2,
+						padding = { left = 2, right = 2 },
 						color = function()
 							local git_colors = {
 								colors.git_color_1,
@@ -81,34 +80,38 @@ return {
 				lualine_y = {},
 				lualine_z = {
 					{
-						"filetype",
-						separator = { left = "" },
-						left_padding = 2,
-						right_padding = 2,
-						color = { bg = colors.very_light_purple, fg = colors.deep_purple },
+						--"filetype",
+						--separator = { left = "" },
+						--padding = { left = 2, right = 2 },
+						--color = { bg = colors.very_light_purple, fg = colors.deep_purple },
 					},
 					{
-						"progress",
-						separator = { left = "" },
-						left_padding = 2,
-						right_padding = 2,
-						color = { bg = colors.very_light_purple, fg = colors.deep_purple },
+						--"progress",
+						--separator = { left = "" },
+						--padding = { left = 2, right = 2 },
+						--color = { bg = colors.very_light_purple, fg = colors.deep_purple },
 					},
 					{
-						"location",
-						separator = { left = "", right = "" },
-						left_padding = 2,
-						right_padding = 2,
+						--"location",
+						--separator = { left = "", right = "" },
+						--padding = { left = 2, right = 2 },
 					},
 				},
 			},
 			inactive_sections = {
-				lualine_a = { "filename" },
+				lualine_a = {
+                    {
+                        "filename",
+                        separator = { left = "", right = "" },
+                        padding = { left = 1, right = 1 },
+                        color = { bg = colors.deep_purple, fg = colors.pale_purple },
+                    },
+                },
 				lualine_b = {},
 				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {},
-				lualine_z = { "location" },
+				lualine_z = {},
 			},
 			tabline = {},
 			extensions = {},
