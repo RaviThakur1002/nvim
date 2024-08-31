@@ -15,6 +15,7 @@ return {
                     require("dracula-config")()
                     ]],
 				},
+				"palette",
 				"rose-pine-moon",
 				"rose-pine-main",
 				"material-darker",
@@ -24,6 +25,7 @@ return {
 				"minimal",
 				"embark",
 				"bamboo",
+				"monochrome",
 			},
 			livePreview = true,
 		})

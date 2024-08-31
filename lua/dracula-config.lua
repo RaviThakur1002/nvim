@@ -1,3 +1,4 @@
+
 return function()
     local dracula = require("dracula")
     dracula.setup({
