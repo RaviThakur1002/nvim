@@ -119,24 +119,24 @@ return {
 				},
 				lualine_x = {},
 				lualine_y = {
-					{
-						"filetype",
-						separator = { left = "" }, -- Apply left separator here
-						color = function()
-							local colors = get_theme_colors()
-							return { bg = colors.mid_bg, fg = colors.fg }
-						end,
-					},
+					--{
+						--"filetype",
+						--separator = { left = "" }, -- Apply left separator here
+						--color = function()
+							--local colors = get_theme_colors()
+							--return { bg = colors.mid_bg, fg = colors.fg }
+						--end,
+					--},
 				},
 				lualine_z = {
-					{
-						"location",
-						separator = { left = "", right = "" }, -- Apply left and right separators here
-						padding = { left = 2, right = 2 },
-						color = function()
-							return { bg = get_mode_color(), fg = get_theme_colors().bg }
-						end,
-					},
+					--{
+						--"location",
+						--separator = { left = "", right = "" }, -- Apply left and right separators here
+						--padding = { left = 2, right = 2 },
+						--color = function()
+							--return { bg = get_mode_color(), fg = get_theme_colors().bg }
+						--end,
+					--},
 				},
 			},
 			inactive_sections = {
