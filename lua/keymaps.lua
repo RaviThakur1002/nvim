@@ -72,6 +72,8 @@ map("n", "<A-Right>", "<C-w>l", opts)
 map("n", "<A-Up>", "<C-w>k", opts)
 map("n", "<A-Down>", "<C-w>j", opts)
 
+-- C++ Template
+map("n" ,"<Leader>cp",":CPTemplate<CR>",opts)
 
 -- ──────────────────────────── REPLACEMENTS ─────────────────────────
 

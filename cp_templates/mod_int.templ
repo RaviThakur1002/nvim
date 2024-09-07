@@ -1,0 +1,82 @@
+namespace mint_ns {
+
+template<auto P>
+struct Modular {
+    using value_type = decltype(P);
+    value_type value;
+
+    Modular(long long k = 0) : value(norm(k)) {}
+
+    // Addition
+    Modular& operator+=(const Modular& b) { value += b.value; if (value >= P) value -= P; return *this; }
+    friend Modular operator+(Modular a, const Modular& b) { return a += b; }
+
+    // Subtraction
+    Modular& operator-=(const Modular& b) { value -= b.value; if (value < 0) value += P; return *this; }
+    friend Modular operator-(Modular a, const Modular& b) { return a -= b; }
+    Modular operator-() const { return Modular(-value); }
+
+    // Multiplication
+    Modular& operator*=(const Modular& b) { value = value * 1LL * b.value % P; return *this; }
+    friend Modular operator*(Modular a, const Modular& b) { return a *= b; }
+
+    // Division
+    Modular& operator/=(const Modular& b) { return *this *= b.inv(); }
+    friend Modular operator/(Modular a, const Modular& b) { return a /= b; }
+
+    // Increment/Decrement
+    Modular& operator++() { return *this += 1; }
+    Modular& operator--() { return *this -= 1; }
+    Modular operator++(int) { Modular result(*this); ++*this; return result; }
+    Modular operator--(int) { Modular result(*this); --*this; return result; }
+
+    // Comparison
+    friend bool operator==(const Modular& a, const Modular& b) { return a.value == b.value; }
+    friend bool operator!=(const Modular& a, const Modular& b) { return a.value != b.value; }
+
+    // Conversion
+    explicit operator int() const { return value; }
+    explicit operator long long() const { return value; }
+
+    // Utility functions
+    static constexpr value_type mod() { return P; }
+
+    value_type norm(long long k) const {
+        if (!(-P <= k && k < P)) k %= P;
+        if (k < 0) k += P;
+        return k;
+    }
+
+    Modular inv() const {
+        value_type a = value, b = P, x = 0, y = 1;
+        while (a != 0) {
+            value_type q = b / a;
+            b -= q * a; std::swap(a, b);
+            x -= q * y; std::swap(x, y);
+        }
+        return Modular(x);
+    }
+
+    Modular pow(long long n) const {
+        Modular res = 1, a = *this;
+        while (n > 0) {
+            if (n & 1) res *= a;
+            a *= a;
+            n >>= 1;
+        }
+        return res;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Modular& m) { return os << m.value; }
+    friend std::istream& operator>>(std::istream& is, Modular& m) { long long v; is >> v; m = Modular(v); return is; }
+};
+
+} // namespace mint_ns
+
+// Define commonly used moduli
+constexpr int MOD = 1000000007;
+constexpr int MOD1 = 998244353;
+
+// Create aliases for easy use
+using Mint = mint_ns::Modular<MOD>;
+using Mint1 = mint_ns::Modular<MOD1>;
