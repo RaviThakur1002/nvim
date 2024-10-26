@@ -18,7 +18,6 @@ return {
 				"rose-pine-main",
 				"minimal",
 				"embark",
-				"calvera",
 			},
 			livePreview = true,
 		})
