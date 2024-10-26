@@ -7,7 +7,6 @@
   "arrow.nvim": { "branch": "master", "commit": "5438c977e729a29d96bd54c8da3103154e80dbd1" },
   "auto-session": { "branch": "main", "commit": "3cd531ce4d46fb156268ddedf5f3e6822ef26af7" },
   "bufferline.nvim": { "branch": "main", "commit": "5c528bee3dd797d5bd6bae5f229411939b25b203" },
-  "calvera-dark.nvim": { "branch": "main", "commit": "84802d0bde047ce79ebfddc1800800f0bd67f37a" },
   "catppuccin": { "branch": "main", "commit": "08efbefa415fbe8ae48799cddc6a5783d2465375" },
   "cd-project.nvim": { "branch": "main", "commit": "e8699d5d636c88343aebb8b2400498bc2ca5fb9f" },
   "cellular-automaton.nvim": { "branch": "main", "commit": "11aea08aa084f9d523b0142c2cd9441b8ede09ed" },

@@ -15,7 +15,11 @@ return {
    -- colorful winsep
    {
       "nvim-zh/colorful-winsep.nvim",
-      config = true,
-      event = { "WinNew", "WinLeave", "WinEnter" }, -- Added more events to trigger the plugin
+      config = function()
+         require("colorful-winsep").setup({
+            symbols = { "─", "│", "┌", "┐", "└", "┘" },
+         })
+      end,
+      event = { "WinLeave" },
    },
 }
