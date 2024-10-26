@@ -6,7 +6,8 @@ local opts = { noremap = true, silent = true }
 
 -- Compile and run C++ code with redirection on F5
 -- To integrate distcc, modify the mapping like this:
-map('n', '<F5>', ':w | silent! !ccache distcc g++ -std=c++23 -o main % && ./main<CR>', { noremap = true, silent = true })
+map('n', '<F5>', ':w | silent! !g++ -std=c++23 -o main % && ./main<CR>', { noremap = true, silent = true })
+
 
 
 -- Run JavaScript file with Node.js on F6

@@ -98,12 +98,7 @@ return {
         "LudoPinelli/comment-box.nvim",
     },
 
-    -- ╭──────────────╮
-    -- │ bad-practice │
-    -- ╰──────────────╯
-    {
-        "antonk52/bad-practices.nvim",
-    },
+
 
     -- ╭────────────╮
     -- │ cd-project │
@@ -121,12 +116,6 @@ return {
         "eandrju/cellular-automaton.nvim",
     },
 
-    -- ╭───────────╮
-    -- │ centerpad │
-    -- ╰───────────╯
-    {
-        "smithbm2316/centerpad.nvim",
-    },
 
     -- ╭───────────────╮
     -- │ editor config │
