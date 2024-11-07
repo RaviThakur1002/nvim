@@ -6,13 +6,6 @@ return {
 			themes = {
 				"catppuccin-mocha",
 				"duskfox",
-				{
-					name = "Dracula (Dark)",
-					colorscheme = "dracula",
-					before = [[
-                    require("dracula-config")()
-                    ]],
-				},
 				"palette",
 				"rose-pine-moon",
 				"rose-pine-main",
