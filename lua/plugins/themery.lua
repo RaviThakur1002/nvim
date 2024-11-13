@@ -11,6 +11,7 @@ return {
 				"rose-pine-main",
 				"minimal",
 				"embark",
+				"yorumi",
 			},
 			livePreview = true,
 		})
