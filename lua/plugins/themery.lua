@@ -5,13 +5,13 @@ return {
 		require("themery").setup({
 			themes = {
 				"catppuccin-mocha",
+				"nightfox",
 				"duskfox",
 				"palette",
 				"rose-pine-moon",
 				"rose-pine-main",
 				"minimal",
 				"embark",
-				"yorumi",
 			},
 			livePreview = true,
 		})

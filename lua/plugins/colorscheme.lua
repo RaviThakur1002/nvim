@@ -77,11 +77,4 @@ return {
 		end,
 	},
 
-	-- ╭────────╮
-	-- │ yorumi │
-	-- ╰────────╯
-	{
-		"yorumicolors/yorumi.nvim",
-	},
-
 }
