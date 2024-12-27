@@ -1,5 +1,8 @@
 -- Initialize vim.opt as a Lua table
 vim.opt = vim.opt or {}
+vim.opt.sessionoptions:remove('folds')
+
+
 
 -- Define CPTemplate command
 --vim.cmd([[
@@ -46,6 +49,9 @@ local cp_templates = require('cp_templates')
 cp_templates.setup({
     -- Your custom config here
 })
+
+--cp_testcases config
+require('cp_testcases').setup()
 
 -- Define commands
 vim.api.nvim_create_user_command('CPTemplate', function(opts)
