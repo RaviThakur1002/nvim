@@ -1,4 +1,3 @@
--- ~/.config/nvim/lua/cp_testcases.lua
 local M = {}
 
 M.config = {
@@ -6,12 +5,21 @@ M.config = {
         layout_config = {
             width = 0.2,
             height = 0.3,
+            prompt_position = "top",
         },
-        layout_strategy = "center",
+        layout_strategy = "vertical",
+        sorting_strategy = "ascending", -- Sort in ascending order
+        border = true,
+        borderchars = {
+            prompt = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+            results = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        },
+
+        results_title = "Results",
     },
 }
 
--- Function to parse JSON file
+-- Function to parse JSON file (unchanged)
 function M.parse_json_file(file_path)
     local file = io.open(file_path, "r")
     if not file then
@@ -29,7 +37,7 @@ function M.parse_json_file(file_path)
     return parsed
 end
 
--- Function to get test cases
+-- Function to get test cases (unchanged)
 function M.get_test_cases()
     local json_path = vim.fn.getcwd() .. "/test_cases.json"
     local data = M.parse_json_file(json_path)
@@ -39,16 +47,14 @@ function M.get_test_cases()
     return data.tests
 end
 
--- Function to format test case content
+-- Function to format test case content (unchanged)
 function M.format_content(content)
     local lines = {}
     if content:sub(-1) == "\n" then
-        -- If content ends with newline, preserve it
         for line in (content .. "\n"):gmatch("([^\n]*)\n") do
             table.insert(lines, line)
         end
     else
-        -- If content doesn't end with newline, process normally
         for line in content:gmatch("[^\n]+") do
             table.insert(lines, line)
         end
@@ -56,31 +62,23 @@ function M.format_content(content)
     return lines
 end
 
--- Function to insert test case input and output at cursor
+-- Function to insert test case input and output at cursor (unchanged)
 function M.insert_test_case(test_case)
-    -- Clear the current buffer content
     local buf = vim.api.nvim_get_current_buf()
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, {})
 
-    -- Process input string
     local input = test_case.input:gsub("\\n", "\n")
     local input_lines = M.format_content(input)
-    
-    -- Process output string
+
     local output = test_case.output:gsub("\\n", "\n")
     local output_lines = M.format_content(output)
 
-    -- Combine input and output with a separator
     local all_lines = input_lines
-    --table.insert(all_lines, "")  -- Add empty line between input and output
     table.insert(all_lines, "Expected Output:")
     vim.list_extend(all_lines, output_lines)
 
-    -- Insert all lines at the beginning of the buffer
     vim.api.nvim_buf_set_lines(buf, 0, 0, false, all_lines)
-    
-    -- Move cursor to the beginning of the file
-    vim.api.nvim_win_set_cursor(0, {1, 0})
+    vim.api.nvim_win_set_cursor(0, { 1, 0 })
 end
 
 function M.select_and_insert_test_case()
@@ -89,6 +87,11 @@ function M.select_and_insert_test_case()
         vim.notify("No test cases found in test_cases.json", vim.log.levels.WARN)
         return
     end
+
+    -- Sort test cases by ID in ascending order
+    table.sort(test_cases, function(a, b)
+        return a.id < b.id
+    end)
 
     local entries = {}
     for _, test in ipairs(test_cases) do
@@ -107,30 +110,37 @@ function M.select_and_insert_test_case()
         local pickers = require("telescope.pickers")
         local finders = require("telescope.finders")
         local conf = require("telescope.config").values
+        local themes = require("telescope.themes")
 
-        pickers.new(M.config.telescope_config, {
-            prompt_title = "Test Cases",
-            finder = finders.new_table({
-                results = entries,
-                entry_maker = function(entry)
-                    return {
-                        value = entry,
-                        display = entry.display,
-                        ordinal = entry.display,
-                    }
+        -- Create a custom theme based on the config
+        local custom_theme = themes.get_dropdown(M.config.telescope_config)
+
+        pickers
+            .new(custom_theme, {
+                prompt_title = "Test Cases",
+                results_title = "Results",
+                finder = finders.new_table({
+                    results = entries,
+                    entry_maker = function(entry)
+                        return {
+                            value = entry,
+                            display = entry.display,
+                            ordinal = string.format("%03d", entry.id), -- Ensure proper numeric sorting
+                        }
+                    end,
+                }),
+                sorter = conf.generic_sorter({}),
+                previewer = false,
+                attach_mappings = function(prompt_bufnr, map)
+                    actions.select_default:replace(function()
+                        actions.close(prompt_bufnr)
+                        local selection = action_state.get_selected_entry()
+                        M.insert_test_case(selection.value)
+                    end)
+                    return true
                 end,
-            }),
-            sorter = conf.generic_sorter({}),
-            previewer = false,
-            attach_mappings = function(prompt_bufnr, map)
-                actions.select_default:replace(function()
-                    actions.close(prompt_bufnr)
-                    local selection = action_state.get_selected_entry()
-                    M.insert_test_case(selection.value)
-                end)
-                return true
-            end,
-        }):find()
+            })
+            :find()
     else
         vim.ui.select(entries, {
             prompt = "Select Test Case:",
@@ -157,3 +167,4 @@ function M.setup(opts)
 end
 
 return M
+
