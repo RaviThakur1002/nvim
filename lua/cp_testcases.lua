@@ -15,7 +15,7 @@ M.config = {
             results = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         },
 
-        results_title = "Results",
+        --results_title = "Results",
     },
 }
 
