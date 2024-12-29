@@ -68,9 +68,6 @@ template <class T>
 void print_v(vector<T> &v) { for (auto x : v) cout << x << " "; cout <<"\n";}
 
 /* UTILS */
-#define MOD 1000000007
-#define MOD1 998244353
-#define PI 3.1415926535897932384626433832795
 #define read(type) readInt<type>()
 void google(int t) {cout << "Case #" << t << ": ";}
 ll power(ll a,ll b,ll mod){ll res=1;while(b>0){if(b&1)res=(res*a)%mod;a=(a*a)%mod;b=b>>1;}return res;}
@@ -98,6 +95,11 @@ typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
 const char nl = '\n';
+const long long int MOD = 1000000007;
+const long long int MOD1 = 998244353;
+const long double PI = 3.1415926535897932384626433832795;
+const long long int INF = 1e18+1;
+
 
 /* BIT OPERATIONS */
 int popcount(ll x) { return __builtin_popcountll(x); }
