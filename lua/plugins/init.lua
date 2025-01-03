@@ -98,8 +98,6 @@ return {
         "LudoPinelli/comment-box.nvim",
     },
 
-
-
     -- ╭────────────╮
     -- │ cd-project │
     -- ╰────────────╯
@@ -108,20 +106,4 @@ return {
 
         "LintaoAmons/cd-project.nvim",
     },
-
-    -- ╭──────────╮
-    -- │ cellular │
-    -- ╰──────────╯
-    {
-        "eandrju/cellular-automaton.nvim",
-    },
-
-
-    -- ╭───────────────╮
-    -- │ editor config │
-    -- ╰───────────────╯
-    {
-        "editorconfig/editorconfig-vim",
-    },
 }
-
