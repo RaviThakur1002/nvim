@@ -1,0 +1,100 @@
+template<typename T = void, typename Graph = vector<vector<int>>>
+T dfs(int node, Graph& adj, vector<bool>& visited) {
+    visited[node] = true;
+    
+    for(auto& neighbor : adj[node]) {
+        if(!visited[neighbor]) {
+            dfs<T>(neighbor, adj, visited);
+        }
+    }
+}
+
+template<typename T = void, typename Graph = vector<vector<int>>>
+struct DFS {
+    Graph adj;
+    vector<bool> visited;
+    vector<int> entry, exit;
+    int timer = 0;
+    int n = 0;  // number of nodes
+    
+    // Constructor with size
+    DFS(int size) : n(size) {
+        adj.resize(n);
+        visited.resize(n);
+        entry.resize(n);
+        exit.resize(n);
+    }
+    
+    // Constructor with existing graph
+    DFS(Graph& g) : adj(g) {
+        n = adj.size();
+        visited.resize(n);
+        entry.resize(n);
+        exit.resize(n);
+    }
+    
+    // Add undirected edge
+    void addEdge(int u, int v) {
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    
+    // Add directed edge
+    void addDirectedEdge(int u, int v) {
+        adj[u].push_back(v);
+    }
+    
+    // Build graph from edge list
+    void buildFromEdges(const vector<pair<int, int>>& edges, bool directed = false) {
+        for(const auto& [u, v] : edges) {
+            if(directed) {
+                addDirectedEdge(u, v);
+            } else {
+                addEdge(u, v);
+            }
+        }
+    }
+    
+    // Build graph from adjacency matrix
+    void buildFromMatrix(const vector<vector<int>>& matrix) {
+        n = matrix.size();
+        adj.resize(n);
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                if(matrix[i][j]) {
+                    adj[i].push_back(j);
+                }
+            }
+        }
+        resetArrays();
+    }
+    
+    void run(int node) {
+        visited[node] = true;
+        entry[node] = timer++;
+        
+        for(auto& neighbor : adj[node]) {
+            if(!visited[neighbor]) {
+                run(neighbor);
+            }
+        }
+        
+        exit[node] = timer++;
+    }
+    
+    bool isAncestor(int u, int v) {
+        return entry[u] <= entry[v] && exit[u] >= exit[v];
+    }
+    
+    void reset() {
+        fill(visited.begin(), visited.end(), false);
+        timer = 0;
+    }
+    
+private:
+    void resetArrays() {
+        visited.resize(n);
+        entry.resize(n);
+        exit.resize(n);
+    }
+};

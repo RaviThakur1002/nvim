@@ -1,0 +1,25 @@
+# Ignore node_modules directory (common for npm/yarn projects)
+node_modules/
+
+# Ignore package-lock.json (if you don't want to track it)
+package-lock.json
+
+# Ignore .env files (environment-specific settings, often sensitive)
+.env
+
+# Ignore log files and other temporary files
+*.log
+*.tmp
+
+# Ignore Neovim swap files
+*.swp
+*.bak
+
+# Optionally, ignore lazy-lock.json and lazyvim.json if you don't want to track them
+lazyvim.json
+lazy-lock.json
+
+# Ignore any other generated or unnecessary files
+dist/
+build/
+
