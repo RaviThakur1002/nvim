@@ -116,7 +116,7 @@ return {
 				},
 				disabled_filetypes = {},
 				always_divide_middle = true,
-				glob
+				globalstatus = true,
 			},
 			sections = {
 				lualine_a = {
