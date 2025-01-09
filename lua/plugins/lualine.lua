@@ -48,8 +48,8 @@ return {
 		-- New function to determine if a color is light or dark
 		local function is_light(color)
 			local r, g, b = tonumber(color:sub(2, 3), 16), tonumber(color:sub(4, 5), 16), tonumber(color:sub(6, 7), 16)
-			local brightness = (r * 299 + g * 587 + b * 114) / 1000
-			return brightness > 155
+		 local brightness = (r * 0.2126 + g * 0.7152 + b * 0.0722)
+			return brightness > 128
 		end
 
 		local function get_mode_color()
@@ -116,7 +116,7 @@ return {
 				},
 				disabled_filetypes = {},
 				always_divide_middle = true,
-				globalstatus = true,
+				glob
 			},
 			sections = {
 				lualine_a = {

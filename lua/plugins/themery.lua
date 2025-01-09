@@ -7,9 +7,9 @@ return {
 				"nightfox",
 				"duskfox",
 				"tokyonight-night",
-				"tokyonight-storm",
 				"tokyonight-moon",
 				"everforest",
+				"nordic",
 
 			},
 			livePreview = true,
