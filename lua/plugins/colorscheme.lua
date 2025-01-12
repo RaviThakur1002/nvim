@@ -13,4 +13,5 @@ return {
 	{
 		"shaunsingh/nord.nvim",
 	},
+
 }
