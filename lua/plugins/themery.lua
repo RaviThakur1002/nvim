@@ -4,12 +4,8 @@ return {
 	config = function()
 		require("themery").setup({
 			themes = {
-				"nightfox",
-				"duskfox",
-				"tokyonight-night",
-				"tokyonight-moon",
 				"everforest",
-				"nordic",
+				"nord",
 
 			},
 			livePreview = true,

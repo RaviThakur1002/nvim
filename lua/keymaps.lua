@@ -5,9 +5,7 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Compile and run C++ code with redirection on F5
--- To integrate distcc, modify the mapping like this:
 map('n', '<F5>', ':w | silent! !g++ -std=c++17 -o main % && ./main<CR>', { noremap = true, silent = true })
-
 
 
 -- Run JavaScript file with Node.js on F6
@@ -50,10 +48,6 @@ map("n", "<Leader>h", ":FloatermToggle<CR>", opts)
 map("n", "<Leader>fn", ":FloatermNext<CR>", opts)
 map("n", "<Leader>fp", ":FloatermPrev<CR>", opts)
 
--- CellularAutomaton mappings
-map("n", "<Leader>fml", ":CellularAutomaton make_it_rain<CR>", opts)
-map("n", "<Leader>fmg", ":CellularAutomaton game_of_life<CR>", opts)
-
 -- No highlight
 map("n", "<S-N>", ":nohlsearch<CR>", opts)
 
@@ -81,9 +75,6 @@ map("n" ,"<Leader>cp",":CPTemplate<CR>",opts)
 
 -- ──────────────────────────── REPLACEMENTS ─────────────────────────
 
--- Global replacement
-map("n", "<leader>rg", ":%s//g<Left><Left>", opts)
-
 -- Range-Based Replacement
 function RangeReplace()
   local start_line = tonumber(vim.fn.input("Start Line: "))
@@ -105,9 +96,10 @@ end
 
 map("n", "<leader>rr", ":lua RangeReplace()<CR>", opts)
 
--- Current Line Replacement
-map("n", "<leader>Cl", ":s//g<Left><Left>", opts)
 
 -- ──────────────────────────────────────────────────────────────────────
+
+-- Mapping jj to escape
+map("i", "jj", "<ESC>", opts)
 
 return true -- Important for Lua modules
