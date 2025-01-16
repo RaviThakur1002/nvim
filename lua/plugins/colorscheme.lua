@@ -6,4 +6,12 @@ return {
 	{
 		"sainnhe/everforest",
 	},
+
+	--poimandres
+	{
+		"olivercederborg/poimandres.nvim",
+	},
+
+
+
 }
