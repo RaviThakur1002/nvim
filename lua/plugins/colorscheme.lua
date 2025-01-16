@@ -1,8 +1,8 @@
 return {
 
-	--material
+	--everforest
 	{
-		"marko-cerovac/material.nvim",
+		"neanias/everforest-nvim",
 	},
 
 
