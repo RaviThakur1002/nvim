@@ -1,0 +1,56 @@
+struct BinaryLifting {
+    int n ; 
+    int maxPower;
+    long long maxRequirement;
+    vector<vector<int>>parent;
+    BinaryLifting(int n1, vector<vector<int>>&edges , long long requirement , int root)
+        :n(n1) , maxPower(log2(requirement + 1)) , maxRequirement(requirement),
+         parent(n1 , vector<int>(log2(requirement + 1) + 1 , -1)){
+
+      fillParentTable(root , edges);
+    }
+
+    void fillParentTable(int root , vector<vector<int>>&edges){
+        vector<bool>visited(n);
+        dfsBinaryLifting(root , edges , visited);
+        int intermediate = -1 ;
+            //i -> i is referrring to the powers of 2 
+            //j -> j is referring to the nodes 
+            //so for calculating the 2^ith parent of j
+            //we have to calculate 2^i-1 th parent of j and 
+            // 2^i-1 th parent of 2^i-1th parent of j = 2^ith parent of j 
+        for(int i = 1; i<=maxPower ; i++){
+            for(int j =0 ; j<n ;j++){
+                intermediate = parent[j][i-1];
+                if(intermediate != -1){
+                    parent[j][i] = parent[intermediate][i-1];
+                }
+            }
+        }
+    }
+
+    void dfsBinaryLifting(int root , vector<vector<int>>&edges , vector<bool>&visited){
+        visited[root]=true;
+        for(auto &it: edges[root]){
+            if(!visited[it]){
+                parent[it][0]=root;
+                dfsBinaryLifting(it, edges , visited);
+            }
+        }
+        
+    }
+
+    int kthParent(int x , int k ){
+        for(int i=0; i<=maxPower ; i++){
+            if(k & (1<<i)){
+                if(x==-1)return x;
+                x=parent[x][i];
+            }
+        }
+        return x;
+    }
+    
+};
+
+
+

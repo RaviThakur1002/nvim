@@ -5,8 +5,6 @@ return {
 		require("themery").setup({
 			themes = {
 				"everforest",
-				"nord",
-
 			},
 			livePreview = true,
 		})
