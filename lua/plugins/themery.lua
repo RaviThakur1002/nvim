@@ -4,7 +4,9 @@ return {
 	config = function()
 		require("themery").setup({
 			themes = {
-				"everforest",
+				"material-deep-ocean",
+				"material-oceanic"
+
 			},
 			livePreview = true,
 		})

@@ -120,7 +120,7 @@ return {
       },
       sections = {
         lualine_a = {
-          { "mode", separator = { left = "", right = "" }, padding = { left = 2, right = 2 } },
+          { "mode", separator = { left = "", right = "" }, padding = { left = 2, right = 2 } },
         },
         lualine_b = {
           {
