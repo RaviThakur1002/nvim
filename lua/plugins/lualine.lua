@@ -48,7 +48,7 @@ return {
     -- New function to determine if a color is light or dark
     local function is_light(color)
       local r, g, b = tonumber(color:sub(2, 3), 16), tonumber(color:sub(4, 5), 16), tonumber(color:sub(6, 7), 16)
-     local brightness = (r * 0.2126 + g * 0.7152 + b * 0.0722)
+      local brightness = (r * 0.2126 + g * 0.7152 + b * 0.0722)
       return brightness > 128
     end
 
@@ -165,7 +165,34 @@ return {
         lualine_y = {},
         lualine_z = {},
       },
-      tabline = {},
+
+      tabline = {
+        lualine_a = {
+          {
+            "buffers",
+            separator = { right = "" }, -- Bubble separators for buffers
+            padding = { left = 2, right = 2 },
+            color = function()
+              local colors = get_theme_colors()
+              return { bg = colors.light_bg, fg = colors.fg }
+            end,
+          },
+        },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {
+          {
+            "tabs",
+            separator = { left = "" },
+            color = function()
+              local colors = get_theme_colors()
+              return { bg = colors.visual, fg = colors.bg }
+            end,
+          },
+        },
+      },
       extensions = {},
     })
 

@@ -67,8 +67,6 @@
   "themery.nvim": { "branch": "main", "commit": "bfa58f4b279d21cb515b28023e1b68ec908584b2" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
   "twilight.nvim": { "branch": "main", "commit": "1584c0b0a979b71fd86b18d302ba84e9aba85b1b" },
-  "vim-buffet": { "branch": "master", "commit": "3ee5c836cd7ded3526902122e06110cd3f8549cb" },
-  "vim-devicons": { "branch": "master", "commit": "71f239af28b7214eebb60d4ea5bd040291fb7e33" },
   "vim-floaterm": { "branch": "master", "commit": "4e28c8dd0271e10a5f55142fb6fe9b1599ee6160" },
   "vim-fugitive": { "branch": "master", "commit": "174230d6a7f2df94705a7ffd8d5413e27ec10a80" },
   "vim-maximizer": { "branch": "master", "commit": "2e54952fe91e140a2e69f35f22131219fcd9c5f1" },

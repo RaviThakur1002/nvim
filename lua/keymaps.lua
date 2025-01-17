@@ -102,4 +102,11 @@ map("n", "<leader>rr", ":lua RangeReplace()<CR>", opts)
 -- Mapping jj to escape
 map("i", "jj", "<ESC>", opts)
 
+--Tabline(lualine) keymaps
+for i = 1, 9 do 
+  map("n", "<leader>" .. i, ":LualineBuffersJump" .. i .. "<CR>", opts)
+end
+
+map("n" , "<leader>0" , ":LualineBuffersJump $<CR>", opts) -- jump to last buffer
+
 return true -- Important for Lua modules
