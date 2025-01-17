@@ -114,7 +114,6 @@ return {
           tabline = 100,
           winbar = 100,
         },
-        disabled_filetypes = {},
         always_divide_middle = true,
         globalstatus = true,
       },
