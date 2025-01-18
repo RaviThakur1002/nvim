@@ -138,7 +138,7 @@ return {
 					{
 						"filename",
 						separator = { right = "" }, -- Updated separator
-						padding = { left = -1 },
+						padding = { left = 0 , right = 2 },
 						color = function()
 							local colors = get_theme_colors()
 							return { bg = colors.mid_bg, fg = colors.fg }
