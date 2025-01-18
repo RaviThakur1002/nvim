@@ -2,8 +2,7 @@ return {
 
 	--everforest
 	{
-		"neanias/everforest-nvim",
+		"sainnhe/everforest",
 	},
-
 
 }
