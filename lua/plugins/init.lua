@@ -118,22 +118,29 @@ return {
 	-- ╭────────────╮
 	-- │ vim-notify │
 	-- ╰────────────╯
-{
-	"rcarriga/nvim-notify",
-	config = function()
-		local notify = require("notify")
-		local background_color
-		if vim.api.nvim_get_hl then -- For newer versions of Neovim
-			background_color = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
-		else -- Fallback for older versions
-			background_color = vim.api.nvim_get_hl_by_name("Normal", true).background
-		end
+	{
+		"rcarriga/nvim-notify",
+		config = function()
+			local notify = require("notify")
+			local background_color
+			if vim.api.nvim_get_hl then -- For newer versions of Neovim
+				background_color = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
+			else               -- Fallback for older versions
+				background_color = vim.api.nvim_get_hl_by_name("Normal", true).background
+			end
 
-		notify.setup({
-			background_colour = background_color and string.format("#%06x", background_color) or "#000000",
-		})
-		vim.notify = notify
-	end,
-}
+			notify.setup({
+				background_colour = background_color and string.format("#%06x", background_color) or "#000000",
+			})
+			vim.notify = notify
+		end,
+	},
 
+	-- ╭──────────────╮
+	-- │ smear-cursor │
+	-- ╰──────────────╯
+	{
+		"sphamba/smear-cursor.nvim",
+		opts = {},
+	},
 }
