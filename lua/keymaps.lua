@@ -61,11 +61,11 @@ map("n", "<Leader>cds", ":CdProjectSearchAndAdd<CR>", opts)
 map("n", "<Leader>cdt", ":CdProjectTab<CR>", opts)
 
 
--- Toggle between split windows using Alt + arrow keys
-map("n", "<A-Left>", "<C-w>h", opts)
-map("n", "<A-Right>", "<C-w>l", opts)
-map("n", "<A-Up>", "<C-w>k", opts)
-map("n", "<A-Down>", "<C-w>j", opts)
+-- Toggle between split windows using Leader + custom keys
+map("n", "<Leader>lt", "<C-w>h", opts)  -- Move to the left window
+map("n", "<Leader>rt", "<C-w>l", opts)  -- Move to the right window
+map("n", "<Leader>tu", "<C-w>k", opts)  -- Move to the upper window
+map("n", "<Leader>td", "<C-w>j", opts)  -- Move to the lower window
 
 --ZenMode
 map("n", "<A-z>", ":ZenMode<CR>", opts)
