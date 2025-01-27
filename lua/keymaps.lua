@@ -43,10 +43,14 @@ map("n", "<Leader>tp", ":tabp<CR>", opts)
 map("n", "<Leader>tf", ":tabnew %<CR>", opts)
 
 -- Floaterm key mappings
-map("n", "<Leader>f", ":FloatermNew<CR>", opts)
-map("n", "<Leader>h", ":FloatermToggle<CR>", opts)
-map("n", "<Leader>fn", ":FloatermNext<CR>", opts)
-map("n", "<Leader>fp", ":FloatermPrev<CR>", opts)
+map("n", "<F7>", ":FloatermNew<CR>", opts)
+map("t", "<F7>", "<C-\\><C-n>:FloatermNew<CR>", opts)
+map("n", "<F8>", ":FloatermPrev<CR>", opts)
+map("t", "<F8>", "<C-\\><C-n>:FloatermPrev<CR>", opts)
+map("n", "<F9>", ":FloatermNext<CR>", opts)
+map("t", "<F9>", "<C-\\><C-n>:FloatermNext<CR>", opts)
+map("n", "<F12>", ":FloatermToggle<CR>", opts)
+map("t", "<F12>", "<C-\\><C-n>:FloatermToggle<CR>", opts)
 
 -- No highlight
 map("n", "<S-N>", ":nohlsearch<CR>", opts)
@@ -63,9 +67,9 @@ map("n", "<Leader>cdt", ":CdProjectTab<CR>", opts)
 
 -- Toggle between split windows using Leader + custom keys
 map("n", "<Leader>lt", "<C-w>h", opts)  -- Move to the left window
-map("n", "<Leader>rt", "<C-w>l", opts)  -- Move to the right window
-map("n", "<Leader>tu", "<C-w>k", opts)  -- Move to the upper window
-map("n", "<Leader>td", "<C-w>j", opts)  -- Move to the lower window
+map("n", "<Leader>ll", "<C-w>l", opts)  -- Move to the right window
+map("n", "<Leader>kk", "<C-w>k", opts)  -- Move to the upper window
+map("n", "<Leader>jj", "<C-w>j", opts)  -- Move to the lower window
 
 --ZenMode
 map("n", "<A-z>", ":ZenMode<CR>", opts)

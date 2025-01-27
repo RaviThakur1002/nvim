@@ -1,6 +1,5 @@
 -- File: ~/.config/nvim/lua/cp_templates.lua
 local M = {}
-
 M.config = {
     template_dir = vim.fn.expand("~/.config/nvim/cp_templates"),
     telescope_config = {
