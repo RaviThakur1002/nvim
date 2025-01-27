@@ -1,11 +1,13 @@
 -- Initialize vim.opt as a Lua table
 vim.opt = vim.opt or {}
 vim.opt.sessionoptions:remove('folds')
+vim.opt.termguicolors = true
+vim.opt.signcolumn = "yes"
 
 vim.g.floaterm_width = 0.6
 vim.g.floaterm_height = 0.9
 vim.g.floaterm_title = 'devil($1/$2)'
-vim.cmd [[hi Floaterm guibg=#171e22]]
+vim.g.floaterm_borderchars = '─│─│╭╮╯╰'
 
 -- Define CPTemplate command
 --vim.cmd([[
