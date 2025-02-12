@@ -1,32 +1,51 @@
 import express from "express";
 import fs from "fs/promises";
-import path from "path";
 
 const app = express();
 const port = 10043;
 
-// Your specific input file path
-const INPUT_FILE_PATH = "/home/devil/cp/projectone/input1.txt";
-// Path to store all test cases for Telescope
-const TEST_CASES_FILE = "/home/devil/cp/projectone/test_cases.json";
+const CONFIG = {
+  INPUT_FILE_PATH: "/home/devil/cp/projectone/input1.txt",
+  TEST_CASES_FILE: "/home/devil/cp/projectone/test_cases.json",
+};
 
-app.use(express.json());
+// Raw body parsing middleware for text/plain
+app.use(express.text({ type: 'text/plain' }));
+app.use(express.json({ type: 'application/json' }));
+
 
 app.post("/", async (req, res) => {
-  //const startTime = Date.now();
   try {
-    const data = req.body;
+    // Parse the body based on content type
+    let data = req.body;
+    
+    // If the body is a string (text/plain), try to parse it as JSON
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+        console.log('Successfully parsed text/plain data');
+      } catch (e) {
+        console.error('Failed to parse text/plain data:', e);
+        throw new Error('Invalid JSON in request body');
+      }
+    }
+
+    console.log('Parsed data:', data);
+
+    if (!data || !data.tests || !Array.isArray(data.tests) || data.tests.length === 0) {
+      throw new Error('Invalid or missing test cases in request');
+    }
 
     // Save first test case to input file
-    if (data.tests && data.tests.length > 0) {
-      const formattedContent = `${data.tests[0].input}\nExpected Output:\n${data.tests[0].output}`;
-      await fs.writeFile(INPUT_FILE_PATH, formattedContent);
-    }
-    // Save all test cases and problem info for Telescope
+    const formattedContent = `${data.tests[0].input}\nExpected Output:\n${data.tests[0].output}`;
+    await fs.writeFile(CONFIG.INPUT_FILE_PATH, formattedContent);
+
+    // Save all test cases and problem info
     const testCasesData = {
       problemName: data.name,
       problemGroup: data.group,
       url: data.url,
+      timestamp: new Date().toISOString(),
       tests: data.tests.map((test, index) => ({
         id: index + 1,
         input: test.input,
@@ -34,20 +53,22 @@ app.post("/", async (req, res) => {
       })),
     };
 
-    await fs.writeFile(TEST_CASES_FILE, JSON.stringify(testCasesData, null, 2));
+    await fs.writeFile(
+      CONFIG.TEST_CASES_FILE,
+      JSON.stringify(testCasesData, null, 2)
+    );
 
-    //const endTime = Date.now();
-    //const executionTime = (endTime - startTime) ;
-    //console.log(`Execution time: ${executionTime} ms`);
+    console.log(`✓ Successfully saved test cases for problem: ${data.name}`);
+    res.status(200).json({ success: true });
 
-    console.log(`Saved test cases for problem: ${data.name}`);
-    res.sendStatus(200);
   } catch (error) {
-    console.error("Error processing request:", error);
-    res.sendStatus(500);
+    console.error('Error:', error.message);
+    res.status(500).json({
+      error: error.message,
+    });
   }
 });
 
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`Server started on port ${port}`);
 });
