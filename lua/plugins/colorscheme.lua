@@ -1,6 +1,8 @@
 return {
 
-	--everforest
+-- ╭────────────╮
+-- │ everforest │
+-- ╰────────────╯
 	{
 		"sainnhe/everforest",
 	},
