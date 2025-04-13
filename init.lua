@@ -4,7 +4,7 @@ vim.opt.sessionoptions:remove('folds')
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 
-vim.g.floaterm_width = 0.6
+vim.g.floaterm_width = 0.8
 vim.g.floaterm_height = 0.9
 vim.g.floaterm_title = 'devil($1/$2)'
 vim.g.floaterm_borderchars = '─│─│╭╮╯╰'
