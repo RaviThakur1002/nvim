@@ -118,23 +118,31 @@ return {
 	-- ╭────────────╮
 	-- │ vim-notify │
 	-- ╰────────────╯
-{
-    "rcarriga/nvim-notify",
-    config = function()
-        local notify = require("notify")
-        local background_color
-        if vim.api.nvim_get_hl then -- For newer versions of Neovim
-            background_color = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
-        else               -- Fallback for older versions
-            background_color = vim.api.nvim_get_hl_by_name("Normal", true).background
-        end
-        notify.setup({
-            background_colour = background_color and string.format("#%06x", background_color) or "#000000",
-            timeout = 1000,
-        })
-        vim.notify = notify
-    end,
-},
+	{
+		"rcarriga/nvim-notify",
+		priority = 9000,
+		config = function()
+			local nvim_notify = require("notify")
+			nvim_notify.setup({
+				-- Animation style
+				stages = "static",
+				render = "compact",
+				top_down = false,
+				-- max_height = function()
+				--   return math.floor(vim.o.lines * 0.85)
+				-- end,
+				-- max_width = function()
+				--   return math.floor(vim.o.columns * 0.40)
+				-- end,
+				on_open = function(win)
+					vim.api.nvim_win_set_config(win, { zindex = 100 })
+				end,
+				timeout = 2500,
+			})
+
+			vim.notify = nvim_notify
+		end,
+	},
 
 	-- ╭──────────────╮
 	-- │ smear-cursor │

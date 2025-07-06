@@ -1,56 +1,80 @@
 struct BinaryLifting {
-    int n ; 
-    int maxPower;
-    long long maxRequirement;
-    vector<vector<int>>parent;
-    BinaryLifting(int n1, vector<vector<int>>&edges , long long requirement , int root)
-        :n(n1) , maxPower(log2(requirement + 1)) , maxRequirement(requirement),
-         parent(n1 , vector<int>(log2(requirement + 1) + 1 , -1)){
+    long long n;
+    long long maxK;
+    long long maxPower;
+    vector<vector<long long>> parent;
+    vector<long long> level;
 
-      fillParentTable(root , edges);
+    // Constructor: O(n * log(maxK))
+    BinaryLifting(long long n1, long long root, vector<vector<long long>>& edges, long long maxK)
+        : n(n1),
+          maxK(maxK),
+          maxPower(log2(maxK + 5)),
+          parent(n, vector<long long>(maxPower + 5, -1)),
+          level(n, 0)
+    {
+        fillParentTable(root, edges);  // fills parent[][] and level[]
     }
 
-    void fillParentTable(int root , vector<vector<int>>&edges){
-        vector<bool>visited(n);
-        dfsBinaryLifting(root , edges , visited);
-        int intermediate = -1 ;
-            //i -> i is referrring to the powers of 2 
-            //j -> j is referring to the nodes 
-            //so for calculating the 2^ith parent of j
-            //we have to calculate 2^i-1 th parent of j and 
-            // 2^i-1 th parent of 2^i-1th parent of j = 2^ith parent of j 
-        for(int i = 1; i<=maxPower ; i++){
-            for(int j =0 ; j<n ;j++){
-                intermediate = parent[j][i-1];
-                if(intermediate != -1){
-                    parent[j][i] = parent[intermediate][i-1];
+    // Fills parent table and level[]: O(n * log(maxK))
+    void fillParentTable(long long root, vector<vector<long long>>& edges) {
+        vector<bool> visited(n);
+        dfsBinaryLifting(root, -1, 0, edges, visited);  // DFS: O(n)
+
+        // Filling sparse table: O(n * log(maxK))
+        for (long long i = 1; i <= maxPower; i++) {
+            for (long long node = 0; node < n; node++) {
+                long long midParent = parent[node][i - 1];
+                if (midParent != -1) {
+                    parent[node][i] = parent[midParent][i - 1];
                 }
             }
         }
     }
 
-    void dfsBinaryLifting(int root , vector<vector<int>>&edges , vector<bool>&visited){
-        visited[root]=true;
-        for(auto &it: edges[root]){
-            if(!visited[it]){
-                parent[it][0]=root;
-                dfsBinaryLifting(it, edges , visited);
+    // DFS to fill parent[0] and level[]: O(n)
+    void dfsBinaryLifting(long long node, long long par, long long depth, vector<vector<long long>>& edges, vector<bool>& visited) {
+        visited[node] = true;
+        parent[node][0] = par;
+        level[node] = depth;
+
+        for (auto& child : edges[node]) {
+            if (!visited[child]) {
+                dfsBinaryLifting(child, node, depth + 1, edges, visited);
             }
         }
-        
     }
 
-    int kthParent(int x , int k ){
-        for(int i=0; i<=maxPower ; i++){
-            if(k & (1<<i)){
-                if(x==-1)return x;
-                x=parent[x][i];
+    // Returns the kth parent of node: O(log(k))
+    long long kthParent(long long node, long long k) {
+        for (long long i = 0; i <= maxPower && node != -1; i++) {
+            if (k & (1 << i)) {
+                node = parent[node][i];
             }
         }
-        return x;
+        return node;
     }
-    
+
+    // Returns LCA of u and v: O(log(n))
+    long long LCA(long long u, long long v) {
+        if (level[u] < level[v]) swap(u, v);
+
+        // Step 1: Lift u up to v's level: O(log(n))
+        long long diff = level[u] - level[v];
+        u = kthParent(u, diff);
+
+        if (u == v) return u;
+
+        // Step 2: Lift both up until they meet: O(log(n))
+        for (long long i = maxPower; i >= 0; i--) {
+            if (parent[u][i] != -1 && parent[u][i] != parent[v][i]) {
+                u = parent[u][i];
+                v = parent[v][i];
+            }
+        }
+
+        // Step 3: Return their parent
+        return parent[u][0];
+    }
 };
-
-
 
