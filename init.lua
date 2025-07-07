@@ -43,11 +43,6 @@ require("keymaps")
 
 -- ─────────────────── Load cp_templates configuration ───────────────────
 
---local cp_templates = require('cp_templates_config')
-
----- Define the command
---vim.api.nvim_create_user_command('CPTemplate', cp_templates.select_and_insert_template, {})
---
 local cp_templates = require('cp_templates')
 
 -- Setup the module (optional, if you want to change default config)
@@ -69,7 +64,7 @@ end, {nargs = "?"})
 --------------------------------------------------------------------------
 
 -- Load lazy.nvim with plugins
-require("lazy").setup({ { import = "plugins" } }, {
+require("lazy").setup({ { import = "plugins" } ,{import ="plugins.lsp"}}, {
 	checker = {
 		enabled = true,
 		notify = false,
