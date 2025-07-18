@@ -1,4 +1,3 @@
-
 return {
   "williamboman/mason.nvim",
   dependencies = {
@@ -6,6 +5,7 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   event = "VeryLazy",
+  priority = 1000,
   config = function()
     -- import mason
     local mason = require("mason")
@@ -34,8 +34,6 @@ return {
         "tailwindcss",
         "lua_ls",
         "pyright",
-        "clangd",
-        "ts_ls"
       },
     })
 
@@ -50,4 +48,3 @@ return {
     })
   end,
 }
-

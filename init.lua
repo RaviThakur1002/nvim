@@ -1,18 +1,37 @@
+--Load core configuration
+require("core")
+
 -- Initialize vim.opt as a Lua table
 vim.opt = vim.opt or {}
-vim.opt.sessionoptions:remove('folds')
+vim.opt.sessionoptions:remove("folds")
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 
+vim.lsp.set_log_level("ERROR") -- or "OFF"
+
 vim.g.floaterm_width = 0.8
 vim.g.floaterm_height = 0.9
-vim.g.floaterm_title = 'devil($1/$2)'
-vim.g.floaterm_borderchars = '─│─│╭╮╯╰'
+vim.g.floaterm_title = "devil($1/$2)"
+vim.g.floaterm_borderchars = "─│─│╭╮╯╰"
 
 -- Define CPTemplate command
 --vim.cmd([[
-  --command! -nargs=1 CPTemplate lua require('cp_templates').insert_template(<f-args>)
+--command! -nargs=1 CPTemplate lua require('cp_templates').insert_template(<f-args>)
 --]])
+
+-- Fix virtualedit being silently set after session restore for cpp files
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	pattern = "*.cpp",
+	callback = function()
+		vim.schedule(function()
+			if vim.opt.virtualedit:get() ~= "" then
+				vim.opt.virtualedit = ""
+				vim.opt.startofline = true
+				vim.cmd("normal! 0") -- move cursor to column 0
+			end
+		end)
+	end,
+})
 
 -- Define lazypath
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -36,35 +55,35 @@ vim.opt.rtp:prepend(lazypath)
 require("plugins")
 
 -- Load vim options configuration
-require("vim-options")
+--require("vim-options")
 
 --Load keymaps configuration
-require("keymaps")
+--require("keymaps")
 
 -- ─────────────────── Load cp_templates configuration ───────────────────
 
-local cp_templates = require('cp_templates')
+local cp_templates = require("cp_templates")
 
 -- Setup the module (optional, if you want to change default config)
 cp_templates.setup({
-    -- Your custom config here
+	-- Your custom config here
 })
 
 --cp_testcases config
-require('cp_testcases').setup()
+require("cp_testcases").setup()
 
 -- Define commands
-vim.api.nvim_create_user_command('CPTemplate', function(opts)
-    if opts.args ~= "" then
-        cp_templates.insert_template(opts.args)
-    else
-        cp_templates.select_and_insert_template()
-    end
-end, {nargs = "?"})
+vim.api.nvim_create_user_command("CPTemplate", function(opts)
+	if opts.args ~= "" then
+		cp_templates.insert_template(opts.args)
+	else
+		cp_templates.select_and_insert_template()
+	end
+end, { nargs = "?" })
 --------------------------------------------------------------------------
 
 -- Load lazy.nvim with plugins
-require("lazy").setup({ { import = "plugins" } ,{import ="plugins.lsp"}}, {
+require("lazy").setup({ { import = "plugins" }, { import = "plugins.lsp" } }, {
 	checker = {
 		enabled = true,
 		notify = false,
