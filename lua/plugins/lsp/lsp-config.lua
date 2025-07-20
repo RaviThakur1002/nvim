@@ -81,17 +81,27 @@ return {
 			})
 		end
 
-		-- Pastel diagnostic virtual text highlights
-		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#f28b82", bg = "#2f2f2f", bold = false })
-		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#fdd663", bg = "#2f2f2f", bold = false })
-		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#a7c7e7", bg = "#2f2f2f", bold = false })
-		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#b5ead7", bg = "#2f2f2f", bold = false })
+		-- Pastel diagnostic virtual text highlights with bg
+		--vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#f28b82", bg = "#2f2f2f", bold = false })
+		--vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#fdd663", bg = "#2f2f2f", bold = false })
+		--vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#a7c7e7", bg = "#2f2f2f", bold = false })
+		--vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#b5ead7", bg = "#2f2f2f", bold = false })
+
+
+		--without bg
+		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError",{ fg = "#f28b82", bold = true })
+		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#fdd663", bold = true })
+		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#a7c7e7", bold = true })
+		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#b5ead7", bold = true })
 
 		-- Diagnostic configuration;
 		vim.diagnostic.config({
 			virtual_text = {
 				prefix = "󰊠 ",
 				spacing = 1,
+				format = function()
+					return ""
+				end,
 			},
 			signs = true,
 			underline = true,
