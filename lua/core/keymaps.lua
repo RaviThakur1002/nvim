@@ -107,7 +107,7 @@ map("n", "<leader>rr", ":lua RangeReplace()<CR>", opts)
 map("i", "jj", "<ESC>", opts)
 
 --Tabline(lualine) keymaps
-for i = 1, 9 do 
+for i = 1, 20 do 
   map("n", "<leader>" .. i, ":LualineBuffersJump" .. i .. "<CR>", opts)
 end
 
