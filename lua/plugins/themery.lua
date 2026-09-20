@@ -4,6 +4,7 @@ return {
 	config = function()
 		require("themery").setup({
 			themes = {
+				"red_gray",
 				"everforest",
 			},
 			livePreview = true,

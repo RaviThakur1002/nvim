@@ -27,7 +27,8 @@ vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.opt.autoindent = true
-vim.opt.smartindent = true
+--vim.opt.smartindent = true
+vim.opt.cindent = true
 vim.o.formatoptions = vim.o.formatoptions .. "cqrn"
 
 -------------------------------------------------------
@@ -61,8 +62,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
         vim.opt.guicursor:append("a:blinkwait700-blinkoff400-blinkon250")
         
         -- Set highlight groups
-        vim.api.nvim_set_hl(0, "Cursor", { fg = "white", bg = "#CE93D8", bold = true })
-        vim.api.nvim_set_hl(0, "CursorInsert", { fg = "black", bg = "#AB47BC" })
+        --vim.api.nvim_set_hl(0, "Cursor", { fg = "white", bg = "#CE93D8", bold = true })
+        --vim.api.nvim_set_hl(0, "CursorInsert", { fg = "black", bg = "#AB47BC" })
     end,
 })
 
