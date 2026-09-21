@@ -14,8 +14,8 @@ return {
 			has_line_number = false,
 			show_workspace = false,
 			min_width = 0,
-			bg_x_padding = 50,
-			bg_y_padding = 50,
+			bg_x_padding = 25,
+			bg_y_padding = 25,
 			save_path = "~/Pictures/Screenshots/",
 		})
 	end,
