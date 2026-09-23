@@ -15,6 +15,7 @@ return {
       config = function()
          require("colorful-winsep").setup({
             symbols = { "─", "│", "┌", "┐", "└", "┘" },
+            colors ={"#b71c1c"},
          })
       end,
       event = { "WinLeave" },

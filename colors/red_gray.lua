@@ -89,6 +89,17 @@ local treesitter_groups = {
   ["@constructor"]   = { fg = red_muted },
 }
 
+-- 5. Bracket / indent-guide groups, used by indent-blankline.
+local delimiter_groups = {
+  RainbowDelimiterRed   = { fg = red_bright },
+  RainbowDelimiterWhite = { fg = fg },
+
+  RainbowRed   = { fg = red_bright },
+  RainbowWhite = { fg = fg },
+
+  IblIndent = { fg = subtle },
+}
+
 local function apply(groups)
   for group, settings in pairs(groups) do
     vim.api.nvim_set_hl(0, group, settings)
@@ -98,3 +109,4 @@ end
 apply(ui_groups)
 apply(syntax_groups)
 apply(treesitter_groups)
+apply(delimiter_groups)

@@ -118,17 +118,6 @@ vim.cmd([[
   autocmd TextChanged,TextChangedI ~/cp/projectone/input1.txt silent! write
 ]])
 
--------------------------------------------------------
--- Codeium Configuration
--------------------------------------------------------
-
--- Disable codeium for cpp files
-vim.g.codeium_filetypes = {
-    ["cpp"] = false,
-}
-
--- Disable default codeium bindings
-vim.cmd("let g:codeium_disable_bindings = 1")
 
 -------------------------------------------------------
 -- Commented Options (for future reference)
